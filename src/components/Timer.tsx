@@ -1,5 +1,5 @@
 interface IProps {
-  timer: any;
+  timer: number;
 }
 
 export const Timer = ({ timer }: IProps) => {

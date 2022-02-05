@@ -3,27 +3,26 @@ import { Timer } from './Timer';
 import { Button } from './Button';
 
 export const TimerContainer = () => {
-  const [timer, setTimer] = useState<any>(0);
-  const [pause, setPause] = useState<boolean>();
-  const [intervalId, setIntervalId] = useState<NodeJS.Timer>();
+  const [timer, setTimer] = useState<number>(0);
+  const [timerId, setTimerId] = useState<NodeJS.Timer>();
 
   const onClickStart = () => {
-    setPause(true);
-    if (pause) {
-      const newIntervalId = setInterval(() => {
-        setTimer(timer + 1);
-      }, 1000);
-      setIntervalId(newIntervalId);
-    }
+    const inervalId = setInterval(() => {
+      setTimer(timer + 1);
+    }, 1000);
+    console.log(timer);
+    setTimerId(inervalId);
   };
 
   const onClickStop = () => {
-    setPause(false);
+    if (timerId) {
+      clearInterval(timerId);
+    }
   };
 
   const onClickReset = () => {
-    if (intervalId) {
-      clearInterval(intervalId);
+    if (timerId) {
+      clearInterval(timerId);
       setTimer(0);
     }
   };
