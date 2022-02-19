@@ -8,7 +8,7 @@ export const TimerContainer = () => {
 
   const onClickStart = () => {
     const inervalId = setInterval(() => {
-      setTimer(timer + 1);
+      setTimer((prevValue) => prevValue + 1);
     }, 1000);
     console.log(timer);
     setTimerId(inervalId);
